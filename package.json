@@ -1,0 +1,15 @@
+{
+  "scripts": {
+    "dev:css": "pnpx @tailwindcss/cli -i ./src/input.css -o ./assets/style.css --watch",
+    "dev:serve": "pnpx browser-sync start --server --watch --files \"index.html,src/*,assets/*\" --reload-debounce 100 --no-notify",
+    "dev": "concurrently -n CSS,SERVER -c blue,green \"npm:dev:css\" \"npm:dev:serve\""
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.3.3",
+    "browser-sync": "^3.0.4",
+    "concurrently": "^10.0.4",
+    "daisyui": "^5.7.15",
+    "tailwind-scrollbar": "^4.0.2",
+    "tailwindcss": "^4.3.3"
+  }
+}
