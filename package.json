@@ -11,5 +11,8 @@
     "daisyui": "^5.7.15",
     "tailwind-scrollbar": "^4.0.2",
     "tailwindcss": "^4.3.3"
+  },
+  "dependencies": {
+    "gsap": "^3.15.0"
   }
 }

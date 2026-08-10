@@ -2,6 +2,10 @@
 @plugin "daisyui";
 @plugin "tailwind-scrollbar";
 
+:root {
+  font-family: "Poppins", sans-serif;
+}
+
 @plugin "daisyui/theme" {
   name: "nord";
   default: true;

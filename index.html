@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="nord-dark">
+<html lang="en" data-theme="nord-dark" class="scroll-smooth scrollbar-track-base-200 scrollbar-thumb-secondary">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,16 +8,39 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      font-family: "Poppins", sans-serif;
-    }
-  </style>
+  
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/ScrollSmoother.min.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", (event) => {
+      gsap.registerPlugin(ScrollTrigger,ScrollSmoother)
+      const smoother = ScrollSmoother.create({
+        wrapper: "#smooth-wrapper",
+        content: "#main-container",
+        smooth: 0.8,
+        effects: true
+      })
+
+      document.querySelectorAll('a[href^="#"]').forEach((link) => {
+        link.addEventListener("click", (e) => {
+          e.preventDefault()
+
+          const target = document.querySelector(link.hash)
+
+          if (target) {
+            smoother.scrollTo(target, true, "top-=100 top")
+          }
+        })
+      })
+    })
+  </script>
 </head>
 <body>
-  <div id="scrollable-container" class="h-dvh overflow-x-auto scroll-smooth scrollbar-track-base-200 scrollbar-thumb-secondary">
+  <div id="smooth-wrapper">
     <div id="main-container" class="flex flex-col">
-      <div id="hero-section" class="top-0 sticky flex justify-center items-center bg-base-200 h-dvh">
+      <div id="hero-section" data-speed="0.5" class="flex justify-center items-center bg-base-200 h-dvh">
         <div class="flex flex-col">
           <div class="opacity-90 text-[clamp(1rem,2.5vw,2rem)] leading-0">My Name Is</div>
           <div class="font-bold text-[clamp(2.25rem,6vw,6rem)]">Ibnu Umar</div>
@@ -27,33 +50,39 @@
         </div>
       </div>
 
-      <div id="about-me-section" class="z-10 flex justify-center bg-base-100 lg:bg-base-100/95 lg:backdrop-blur-sm border-base-content/20 border-t">
-        <div class="flex flex-col gap-24 sm:gap-32 lg:gap-48 px-12 sm:px-16 py-24 sm:py-32 lg:py-48 w-full max-w-7xl">
-          
-          <div>
-            <h1 class="opacity-70 font-semibold text-[clamp(1rem,2.25vw,1.5rem)]">Work Experience</h1>
-            <h2 class="font-bold text-[clamp(2rem,5vw,3.5rem)] leading-[clamp(2rem,5vw,3.5rem)]">
-              Junior Software Developer
-            </h2>
-            <h3 class="opacity-70 font-semibold text-[clamp(1rem,2.25vw,1.5rem)] italic">(2025-Now)</h3>
-            <p class="text-[clamp(1rem,2.2vw,1.5rem)]">
-              A year of experience as a software developer, building and maintaining bussiness applications.
-              Developed features such as inventory management, goods production management, and accounting journals.
-            </p>
-          </div>
+      <div class="flex px-12 sm:px-16 py-24 sm:py-32 lg:py-48 justify-center z-10 bg-base-100">
+        <div class="max-w-7xl">
+          <h1 class="opacity-70 font-semibold text-[clamp(1rem,2.25vw,1.5rem)]">Work Experience</h1>
+          <h2 class="font-bold text-[clamp(2rem,5vw,3.5rem)] leading-[clamp(2rem,5vw,3.5rem)]">
+            Junior Software Developer
+          </h2>
+          <h3 class="opacity-70 font-semibold text-[clamp(1rem,2.25vw,1.5rem)] italic">(2025-Now)</h3>
+          <p class="text-[clamp(1rem,2.2vw,1.5rem)]">
+            A year of experience as a software developer, building and maintaining bussiness applications.
+            Developed features such as inventory management, goods production management, and accounting journals.
+          </p>
+        </div>
+      </div>
 
-          <div>
-            <h1 class="opacity-70 font-semibold text-[clamp(1rem,2.25vw,1.5rem)]">School Internship Program</h1>
-            <h2 class="font-bold text-[clamp(2rem,5vw,3.5rem)] leading-[clamp(2rem,5vw,3.5rem)]">
-              PT Global Intermedia
-            </h2>
-            <h3 class="opacity-70 font-semibold text-[clamp(1rem,2.25vw,1.5rem)] italic">(2025)</h3>
-            <p class="text-[clamp(1rem,2.2vw,1.5rem)]">
-              Completed a 6-month internship, gaining experience in professional software development and
-              participating in team discussions and meetings. Worked on designing form mockups, database structures,
-              and applications for digitizing company's physical forms and documents.
-            </p>
-          </div>
+      <div class="flex px-12 sm:px-16 py-24 sm:py-32 lg:py-48 justify-center z-10 bg-[color-mix(in_srgb,var(--color-base-100),var(--color-base-300)_50%)]">
+        <div class="max-w-7xl">
+          <h1 class="opacity-70 font-semibold text-[clamp(1rem,2.25vw,1.5rem)]">School Internship Program</h1>
+          <h2 class="font-bold text-[clamp(2rem,5vw,3.5rem)] leading-[clamp(2rem,5vw,3.5rem)]">
+            PT Global Intermedia
+          </h2>
+          <h3 class="opacity-70 font-semibold text-[clamp(1rem,2.25vw,1.5rem)] italic">(2025)</h3>
+          <p class="text-[clamp(1rem,2.2vw,1.5rem)]">
+            Completed a 6-month internship, gaining experience in professional software development and
+            participating in team discussions and meetings. Worked on designing form mockups, database structures,
+            and applications for digitizing company's physical forms and documents.
+          </p>
+        </div>
+      </div>
+
+      <div id="about-me-section" class="z-10 flex justify-center bg-base-100 border-base-content/10 border-t">
+        <div class="flex flex-col gap-24 sm:gap-32 lg:gap-48 px-12 sm:px-16 py-24 sm:py-32 lg:py-48 w-full max-w-7xl">
+
+          
 
           <div>
             <h1 class="opacity-70 font-semibold text-[clamp(1rem,2.25vw,1.5rem)]">Education</h1>
@@ -112,7 +141,7 @@
         </div>
       </div>
 
-      <div id="showcase-section" class="z-10 flex justify-center bg-base-300 lg:bg-base-300/95 lg:backdrop-blur-sm">
+      <div id="showcase-section" class="z-10 flex justify-center bg-base-300">
         <div class="flex flex-col px-12 sm:px-16 py-24 sm:py-32 lg:py-48 w-full max-w-7xl">
           <h2 class="font-bold text-[clamp(2rem,5vw,3.5rem)] text-center leading-[clamp(2rem,5vw,3.5rem)]">
             Showcases
@@ -132,7 +161,7 @@
         </div>
       </div>
 
-      <div id="links-section" class="z-10 flex justify-center bg-base-100 lg:bg-base-100/95 lg:backdrop-blur-sm">
+      <div id="links-section" class="z-10 flex justify-center bg-base-100">
         <div class="justify-center content-center gap-y-16 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 px-12 sm:px-16 py-24 sm:py-32 lg:py-48 w-full max-w-7xl">
           <h2 class="col-span-full font-bold text-[clamp(2rem,5vw,3.5rem)] text-center leading-[clamp(2rem,5vw,3.5rem)]">
             Links
@@ -156,7 +185,7 @@
         </div>
       </div>
 
-      <footer class="z-10 flex items-end bg-base-100 lg:bg-base-100/95 lg:backdrop-blur-sm px-2 py-1">© 2026 Made by Me with TailwindCSS & DaisyUI❤️</footer>
+      <footer class="z-10 flex items-end bg-base-100 px-2 py-1">© 2026 Made by Me with TailwindCSS & DaisyUI❤️</footer>
     </div>
   </div>
 </body>
