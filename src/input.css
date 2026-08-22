@@ -6,6 +6,8 @@
   font-family: "Poppins", sans-serif;
 }
 
+@custom-variant light (&:where([data-theme=nord], [data-theme=nord] *));
+
 @plugin "daisyui/theme" {
   name: "nord";
   default: true;
@@ -74,4 +76,23 @@
   --border: 1px;
   --depth: 0;
   --noise: 0;
+}
+
+@keyframes blink_anim {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  51% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.animate-blink {
+  animation: blink_anim infinite var(--tw-duration);
 }
